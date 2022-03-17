@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <!-- dont have to add public to file path-->
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+    <h1>Browsing the <%= name %> subreddit </h1>
+    <h2><%= description %> </h2>
+    <p><%= subscribers %> Total Subscribers </p>
+
+    <% for (let post of posts) { %>
+        <article>
+            <p><%= post.title %> - <%= post.author %></p>
+            <% if (post.img) { %>
+                <img src="<%= post.img %>" alt="">
+            <% } %>      
+        </article>
+    <% } %> 
+
+</body>
+</html>
