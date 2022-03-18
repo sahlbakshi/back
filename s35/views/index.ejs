@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Comments</h1>
+    <ul>
+        <!-- of NOT in -->
+        <% for (let comment of comments) { %>
+            <li><%= comment.comment %> - <%= comment.username %></li>
+        <% } %>  
+    </ul>
+    <a href="/comments/new">create new comment</a>
+</body>
+</html>
