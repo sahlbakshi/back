@@ -9,7 +9,10 @@
     <ul>
         <!-- of NOT in -->
         <% for (let comment of comments) { %>
-            <li><%= comment.comment %> - <%= comment.username %></li>
+            <li>
+                <%= comment.comment %> - <%= comment.username %>
+                <a href="/comments/<%= comment.id %>">details</a>
+            </li>
         <% } %>  
     </ul>
     <a href="/comments/new">create new comment</a>
