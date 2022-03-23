@@ -1,3 +1,4 @@
+// REQUIRE
 const mongoose = require('mongoose')
 
 // CONNECT
@@ -6,6 +7,7 @@ const mongoose = require('mongoose')
 mongoose.connect('mongodb://localhost:27017/movies')
 .then(() => { console.log("CONNECTION OPEN") })
 .catch((error) => { console.log(error) })
+
 
 // SCHEMA
 // defining a schema
@@ -25,7 +27,7 @@ const movieSchema = new mongoose.Schema(
 const Movie = mongoose.model('Movie', movieSchema) 
 
 
-// DO STUFF
+// USE NOW
 
 // now we can make movies
 const amadues = new Movie({title: "Amadeus", year: 1982, score: 9.2, rating: "R"})
@@ -33,7 +35,7 @@ const inception = new Movie({title: "Inception", year: 2012, score: 9.0, rating:
 const spiderman = new Movie({title: "Spiderman", year: 2021, score: 8.9, rating: "R"})
 const thebatman = new Movie({title: "The Batman", year: 2022, score: 8.8, rating: "R"})
 
-// save movies
+// save movies to database
 amadues.save()
 inception.save()
 spiderman.save()
