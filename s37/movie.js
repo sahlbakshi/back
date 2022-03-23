@@ -27,7 +27,7 @@ const movieSchema = new mongoose.Schema(
 const Movie = mongoose.model('Movie', movieSchema) 
 
 
-// USE NOW
+// CAN USE NOW
 
 // now we can make movies
 const amadues = new Movie({title: "Amadeus", year: 1982, score: 9.2, rating: "R"})
