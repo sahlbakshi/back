@@ -6,9 +6,12 @@
 </head>
 <body>
     <h1>Edit</h1>
-    <form action="/comments/<%= comment.id %>/edit">
-
+    <form method="post" action='/comments/<%= comment.id %>?_method=PATCH'>
+        <textarea name="comment" cols="30" rows="10">
+            <%= comment.comment %> 
+        </textarea>
+        <button>Save</button>
     </form>
-    <textarea name="comment" cols="30" rows="10"></textarea>
+    <a href="/comments">Back to index</a>
 </body>
 </html>

@@ -1,6 +1,10 @@
 const express = require('express')
 const app = express()
 
+// so that form tag has a patch request 
+const methodOverride = require('method-override')
+app.use(methodOverride('_method'))
+
 // renameing V4 to uuid
 const { v4: uuid } = require('uuid');
 
@@ -10,7 +14,6 @@ app.use(express.urlencoded({ extended: true })) // url encoded
 app.set('view engine', 'ejs')
 
 /*
-
 app.get('/tacos', (req, res) => {
     console.log(req.body)
     res.send('GET')
@@ -21,10 +24,9 @@ app.post('/tacos', (req, res) => {
     const { meat, qty } = req.body
     res.send(`${meat} ${qty}`)
 })
-
 */
 
-const comments = [
+let comments = [
     {
         id: uuid(),
         username: 'todd',
@@ -46,6 +48,9 @@ const comments = [
         comment: 'i am going to the vet'
     }
 ]
+
+// req.params
+// req.body
 
 app.get('/comments', (req, res) => {
     res.render('index', { comments })
@@ -69,9 +74,10 @@ app.get('/comments/:id', (req, res) => {
 
 app.patch('/comments/:id', (req, res) => {
     const { id } = req.params
+    console.log(id);
     const newComment = req.body.comment
-    const prevComment = comments.find(c => c.id == id)
-    prevComment = newComment
+    const findComment = comments.find(c => c.id == id)
+    findComment.comment = newComment
     res.redirect('/comments')
 })
 
@@ -79,6 +85,12 @@ app.get('/comments/:id/edit', (req, res) => {
     const { id } = req.params
     const comment = comments.find(c => c.id == id)
     res.render('edit', { comment })
+})
+
+app.delete('/comments/:id', (req, res) => {
+    const { id } = req.params;
+    comments = comments.filter(c => c.id != id)
+    res.redirect('/comments')
 })
 
 app.listen(3000, () => {
