@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Edit Product</h1>
+    <form action="/products/<%= product._id %>?_method=put" method="post">
+        <input type="text" name="name" placeholder="name" value="<%= product.name %>">
+        <input type="number" name="price" placeholder="price" value="<%= product.price %>">
+        <select name="category" id="">
+            <option value="fruit">fruit</option>
+            <option value="vegetable">vegetable</option>
+            <option value="dairy">dairy</option>
+        </select>
+        <button>Submit</button>
+    </form>
+    <a href="/products/<%= product._id %>">Cancel</a>
+</body>
+</html>
